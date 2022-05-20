@@ -1,12 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
+    <title>Math game</title>
 </head>
+
 <body>
-    
+    <div class="container">
+        <div class="title__container">
+            <div class="title">
+                Реши пример пока не закончилось время
+            </div>
+        </div>
+        <div class="task__container">
+            <div class="task">152 + 154 =</div>
+        </div>
+        <div class="answers__container">
+            <button type="button" class="answer1">48</button>
+            <button type="button" class="answer1">418</button>
+            <button type="button" class="answer1">8</button>
+            <button type="button" class="answer1">48</button>
+            <button type="button" class="answer1">48</button>
+        </div>
+        <div class="result__container">
+            <div class="result">Wrong!</div>
+        </div>
+        <div class="info__container">
+            <div class="time__container">
+                <div class="time__label">
+                    time left: <span class="time__info">00</span>
+                </div>
+            </div>
+            <div class="score__container">
+                <div class="score__container">
+                    score: <span class="score__info">00</span>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <script src="game.js"></script>
 </body>
+
 </html>
