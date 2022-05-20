@@ -59,12 +59,13 @@ img {
     margin: 0 auto;
 }
 .task {
+    display: none;
     font-size: 64px;
     text-align: center;
     margin: 100px 0 100px;
 }
 .answers__container {
-    display: flex;
+    display: none;
     justify-content: space-around;
     margin: 0 auto;
     max-width: 80%;
@@ -80,6 +81,7 @@ img {
     font-size: 48px;
 }
 .result__container {
+    display: none;
     margin: 100px auto 100px;
     max-width: 25%;
 
@@ -90,9 +92,23 @@ img {
     text-align: center;
 }
 .info__container{
-    display: flex;
-    justify-content: space-around;
+    max-width: 75%;
+    display: none;
+    justify-content: space-between;
     text-align: center;
     font-size: 32px;
     text-transform: uppercase;
+    margin: 0 auto;
+}
+.start__button {
+    display: block;
+    border-radius: 15px;
+    border-color: transparent;
+    background-color: #4AFFFF;
+    cursor: pointer;
+    text-align: center;
+    font-size: 48px;
+    margin: 100px auto 100px;
+    text-transform: uppercase;
+    padding: 10px 15px;
 }
