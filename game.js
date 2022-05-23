@@ -1,11 +1,14 @@
 let el = document.querySelector(".start__button");
 el.addEventListener("click", startGame, false);
 
-let timeRemaining = 5;
+let timeRemaining = 15;
+let difficulty = 10;
 let timerId;
+
 function startGame() {
     showElements();
     timerId = setInterval(timer, 1000);
+    generateGame();
 }
 
 function showElements() {
@@ -27,4 +30,23 @@ function timer() {
         timeRemaining--;
         document.querySelector('.time__info').innerHTML = timeRemaining;
     }
+}
+
+function generateGame() {
+    generateTask();
+    generateAnswers();
+}
+
+function generateArg() {
+    return (Math.random()*difficulty).toFixed();
+}
+function generateTask() {
+    let firstArg = generateArg();
+    let secondArg = generateArg();
+    document.querySelector('.task').innerHTML = firstArg + " + " + secondArg + " = ";
+    return firstArg + secondArg;
+}
+
+function generateAnswers() {
+
 }
