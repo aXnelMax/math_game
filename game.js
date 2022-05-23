@@ -10,18 +10,12 @@ function startGame() {
 
 function showElements() {
     let startGame = document.querySelector(".start__button");
-    let task = document.querySelector(".task");
-    let answers = document.querySelector(".answers__container");
-    let infoContainer = document.querySelector('.info__container');
-    let resultContainer = document.querySelector('.result__container');
+    let mainGame = document.querySelector('.main__game');
     let resultText = document.querySelector('.result');
     resultText.style.color = "transparent";
     resultText.innerHTML = "isCorrect";
-    resultContainer.style.display = "block";
-    infoContainer.style.display = "flex";
-    answers.style.display = "flex";
+    mainGame.style.display = "block";
     startGame.style.display = "none";
-    task.style.display = "block";
     document.querySelector('.time__info').innerHTML = timeRemaining;
 }
 
