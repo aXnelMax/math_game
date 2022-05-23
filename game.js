@@ -1,10 +1,13 @@
 let el = document.querySelector(".start__button");
 el.addEventListener("click", startGame, false);
 
+let ans = document.querySelectorAll('.answer');
+ans.forEach(elem => elem.addEventListener("click", checkAnswer, false));
+console.log(ans.id);
 let timeRemaining = 15;
 let difficulty = 10;
 let timerId;
-
+let correctAnswerGlobal;
 function startGame() {
     showElements();
     timerId = setInterval(timer, 1000);
@@ -26,12 +29,18 @@ function timer() {
     if (timeRemaining < 1) {
         document.querySelector('.time__info').innerHTML = "Time is over!";
         clearInterval(timerId);
+        stopGame();
     } else {
         timeRemaining--;
         document.querySelector('.time__info').innerHTML = timeRemaining;
     }
 }
+function stopGame(){
+    let mainGame = document.querySelector('.main__game');
+    document.querySelector('.title').innerHTML = "Game Over!";
+    mainGame.style.display = "none";
 
+}
 function generateGame() {
     generateTask();
     generateAnswers();
@@ -60,4 +69,28 @@ function generateAnswers() {
     answers.forEach((elem, i) => {
         document.querySelector(`#answer-${i}`).innerHTML = elem;
     })
+    correctAnswerGlobal = answers[rightAnswerPos];
+}
+
+
+function checkAnswer(){
+    let answer = this.innerHTML;
+    if (correctAnswerGlobal === +answer) {
+        correctAnswer();
+        generateGame();
+    } else {
+        wrongAnswer();
+        generateGame();
+    }
+}
+function wrongAnswer() {
+    let resultText = document.querySelector('.result');
+    resultText.style.color = "red";
+    resultText.innerHTML = "Wrong!";
+}
+
+function correctAnswer() {
+    let resultText = document.querySelector('.result');
+    resultText.style.color = "green";
+    resultText.innerHTML = "Correct!";
 }
