@@ -38,7 +38,10 @@ function generateGame() {
 }
 
 function generateArg() {
-    return (Math.random()*difficulty).toFixed();
+    return Number((Math.random()*difficulty).toFixed());
+}
+function generateAnswer() {
+    return Number((Math.random()*(difficulty*2)).toFixed());
 }
 function generateTask() {
     let firstArg = generateArg();
@@ -48,5 +51,13 @@ function generateTask() {
 }
 
 function generateAnswers() {
+    let answers = [0, 0, 0, 0, 0];
+    let rightAnswerPos = (Math.random()*4).toFixed();
+    answers = answers.map(elem => elem = generateAnswer());
 
+    answers[rightAnswerPos] = generateTask();
+
+    answers.forEach((elem, i) => {
+        document.querySelector(`#answer-${i}`).innerHTML = elem;
+    })
 }
