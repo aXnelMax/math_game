@@ -3,11 +3,13 @@ el.addEventListener("click", startGame, false);
 
 let ans = document.querySelectorAll('.answer');
 ans.forEach(elem => elem.addEventListener("click", checkAnswer, false));
-console.log(ans.id);
+
 let timeRemaining = 15;
 let difficulty = 10;
 let timerId;
 let correctAnswerGlobal;
+let score = 0;
+
 function startGame() {
     showElements();
     timerId = setInterval(timer, 1000);
@@ -78,6 +80,7 @@ function checkAnswer(){
     if (correctAnswerGlobal === +answer) {
         correctAnswer();
         generateGame();
+        scoreCount();
     } else {
         wrongAnswer();
         generateGame();
@@ -93,4 +96,9 @@ function correctAnswer() {
     let resultText = document.querySelector('.result');
     resultText.style.color = "green";
     resultText.innerHTML = "Correct!";
+}
+
+function scoreCount() {
+    score++;
+    document.querySelector('.score__info').innerHTML = score;
 }
