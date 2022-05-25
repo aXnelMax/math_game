@@ -1,10 +1,13 @@
-let el = document.querySelector(".start__button");
-el.addEventListener("click", startGame, false);
+let start = document.querySelector(".start__button");
+start.addEventListener("click", startGame, false);
 
 let ans = document.querySelectorAll('.answer');
 ans.forEach(elem => elem.addEventListener("click", checkAnswer, false));
 
-let timeRemaining = 15;
+let retry = document.querySelector(".retry__button");
+retry.addEventListener("click", retryGame, false);
+
+let timeRemaining = 5;
 let difficulty = 10;
 let timerId;
 let correctAnswerGlobal;
@@ -16,6 +19,15 @@ function startGame() {
     generateGame();
 }
 
+function retryGame() {
+    timeRemaining = 5;
+    difficulty = 10;
+    score = 0;
+    document.querySelector(".retry__button").style.display = "none";
+    document.querySelector('.final__score').style.display = "none";
+    document.querySelector('.score__info').innerHTML = score;
+    startGame();
+}
 function showElements() {
     let startGame = document.querySelector(".start__button");
     let mainGame = document.querySelector('.main__game');
@@ -39,8 +51,12 @@ function timer() {
 }
 function stopGame(){
     let mainGame = document.querySelector('.main__game');
+    let finalScore = document.querySelector('.final__score');
     document.querySelector('.title').innerHTML = "Game Over!";
+    document.querySelector('.final__score__info').innerHTML = score;
     mainGame.style.display = "none";
+    finalScore.style.display = "block";
+    document.querySelector(".retry__button").style.display = "block";
 
 }
 function generateGame() {
