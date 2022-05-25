@@ -79,8 +79,8 @@ function checkAnswer(){
     let answer = this.innerHTML;
     if (correctAnswerGlobal === +answer) {
         correctAnswer();
-        generateGame();
         scoreCount();
+        generateGame();
         addTime();
     } else {
         wrongAnswer();
@@ -101,6 +101,7 @@ function correctAnswer() {
 
 function scoreCount() {
     score++;
+    difficulty++;
     document.querySelector('.score__info').innerHTML = score;
 }
 
