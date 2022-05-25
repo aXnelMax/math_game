@@ -81,6 +81,7 @@ function checkAnswer(){
         correctAnswer();
         generateGame();
         scoreCount();
+        addTime();
     } else {
         wrongAnswer();
         generateGame();
@@ -101,4 +102,8 @@ function correctAnswer() {
 function scoreCount() {
     score++;
     document.querySelector('.score__info').innerHTML = score;
+}
+
+function addTime(){
+    timeRemaining += 2;
 }
