@@ -71,7 +71,7 @@ img {
     max-width: 80%;
 }
 .answer {
-    width: 200px;
+    width: 180px;
     height: 100px;
     border-radius: 15px;
     border-color: transparent;
@@ -134,4 +134,91 @@ img {
     margin: 100px auto 100px;
     text-transform: uppercase;
     padding: 10px 15px;
+}
+
+@media (max-width: 1024px) {
+    .answer {
+        width: 150px;
+    }
+    .answers__container {
+        max-width: 95%;
+    }
+}
+
+@media (max-width: 768px) {
+    .title__container {
+        width: 430px;
+    }
+    .title {
+        font-size: 30px;
+    }
+    .result__container {
+        margin: 75px auto 75px;
+    }
+    .answer {
+        width: 100px;
+        height: 75px;
+    }
+}
+
+@media (max-width: 425px) {
+    .title__container {
+        width: 300px;
+    }
+    .title {
+        font-size: 24px;
+    }
+    .result__container {
+        margin: 50px auto 50px;
+    }
+    .answer {
+        width: 100px;
+        height: 75px;
+        font-size: 36px;
+        margin: 5px;
+    }
+    .answers__container {
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+    .info__container {
+        font-size: 20px;
+    }
+    .task {
+        font-size: 46px;
+        margin: 75px 0 75px;
+    }
+    .task__container {
+        max-width: 80%;
+    }
+    .result {
+        font-size: 26px;
+    }
+}
+
+@media (max-width: 375px) {
+    .final__score {
+        font-size: 50px;
+    }
+}
+@media (max-width: 320px) {
+    .answer {
+        width: 80px;
+        height: 60px;
+        font-size: 30px;
+        margin: 3px;
+    }
+    .result__container {
+        margin: 40px auto 40px;
+    }
+    .task {
+        font-size: 36px;
+        margin: 50px 0 50px;
+    }
+    .info__container {
+        font-size: 18px;
+    }
+    .title {
+        font-size: 20px;
+    }
 }

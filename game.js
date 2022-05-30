@@ -7,7 +7,7 @@ ans.forEach(elem => elem.addEventListener("click", checkAnswer, false));
 let retry = document.querySelector(".retry__button");
 retry.addEventListener("click", retryGame, false);
 
-let timeRemaining = 5;
+let timeRemaining = 10;
 let difficulty = 10;
 let timerId;
 let correctAnswerGlobal;
