@@ -63,7 +63,7 @@ function stopGame(){
     let mainGame = document.querySelector('.main__game');
     let finalScore = document.querySelector('.final__score');
     document.querySelector('.title').innerHTML = "Game Over!";
-    document.querySelector('.final__score__info').innerHTML = score;
+    document.querySelector('.final__score__info').innerHTML = score + "/" + errorsCount;
     mainGame.style.display = "none";
     finalScore.style.display = "block";
     document.querySelector(".retry__button").style.display = "block";
