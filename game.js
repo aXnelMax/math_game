@@ -12,12 +12,15 @@ let difficulty;
 let timerId;
 let correctAnswerGlobal;
 let score;
+let errorsCount;
 
 function setInitialVariables(){
     timeRemaining = 10;
     difficulty = 10;
     score = 0;
+    errorsCount = 0;
 }
+
 function startGame() {
     setInitialVariables();
     showElements();
@@ -33,6 +36,7 @@ function retryGame() {
     document.querySelector('.title').innerHTML = "Реши пример пока не закончилось время";
     startGame();
 }
+
 function showElements() {
     let startGame = document.querySelector(".start__button");
     let mainGame = document.querySelector('.main__game');
@@ -51,9 +55,10 @@ function timer() {
         stopGame();
     } else {
         timeRemaining--;
-        document.querySelector('.time__info').innerHTML = timeRemaining;
+        updateTime();
     }
 }
+
 function stopGame(){
     let mainGame = document.querySelector('.main__game');
     let finalScore = document.querySelector('.final__score');
@@ -64,6 +69,7 @@ function stopGame(){
     document.querySelector(".retry__button").style.display = "block";
 
 }
+
 function generateGame() {
     generateTask();
     generateAnswers();
@@ -72,9 +78,11 @@ function generateGame() {
 function generateArg() {
     return Number((Math.random()*difficulty).toFixed());
 }
-function generateAnswer() {
-    return Number((Math.random()*(difficulty*2)).toFixed());
+
+function generateAnswer(multiplier) {
+    return Number((Math.random()*(difficulty*multiplier)).toFixed());
 }
+
 function generateTask() {
     let firstArg = generateArg();
     let secondArg = generateArg();
@@ -85,7 +93,7 @@ function generateTask() {
 function generateAnswers() {
     let answers = [0, 0, 0, 0, 0];
     let rightAnswerPos = (Math.random()*4).toFixed();
-    answers = answers.map(elem => elem = generateAnswer());
+    answers = answers.map(elem => elem = generateAnswer(2));
 
     answers[rightAnswerPos] = generateTask();
 
@@ -95,23 +103,27 @@ function generateAnswers() {
     correctAnswerGlobal = answers[rightAnswerPos];
 }
 
-
 function checkAnswer(){
     let answer = this.innerHTML;
     if (correctAnswerGlobal === +answer) {
         correctAnswer();
         scoreCount();
         generateGame();
-        addTime();
+        timeRemaining += 2;
+        updateTime();
     } else {
         wrongAnswer();
         generateGame();
+        timeRemaining -= 1;
+        updateTime();
     }
 }
+
 function wrongAnswer() {
     let resultText = document.querySelector('.result');
     resultText.style.color = "red";
     resultText.innerHTML = "Wrong!";
+    errorsCount++;
 }
 
 function correctAnswer() {
@@ -126,6 +138,6 @@ function scoreCount() {
     document.querySelector('.score__info').innerHTML = score;
 }
 
-function addTime(){
-    timeRemaining += 2;
+function updateTime(){
+    document.querySelector('.time__info').innerHTML = timeRemaining;
 }
