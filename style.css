@@ -159,6 +159,9 @@ img {
         width: 100px;
         height: 75px;
     }
+    .final__score {
+        font-size: 36px;
+    }
 }
 
 @media (max-width: 425px) {
@@ -198,7 +201,7 @@ img {
 
 @media (max-width: 375px) {
     .final__score {
-        font-size: 50px;
+        font-size: 26px;
     }
 }
 @media (max-width: 320px) {
