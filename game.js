@@ -93,6 +93,7 @@ function generateTask() {
 function generateAnswers() {
     let answers = [0, 0, 0, 0, 0];
     let rightAnswerPos = (Math.random()*4).toFixed();
+
     answers = answers.map(elem => elem = generateAnswer(2));
 
     answers[rightAnswerPos] = generateTask();
@@ -100,6 +101,7 @@ function generateAnswers() {
     answers.forEach((elem, i) => {
         document.querySelector(`#answer-${i}`).innerHTML = elem;
     })
+    
     correctAnswerGlobal = answers[rightAnswerPos];
 }
 

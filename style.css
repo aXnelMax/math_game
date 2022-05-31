@@ -162,6 +162,9 @@ img {
 }
 
 @media (max-width: 425px) {
+    .final__score {
+        font-size: 36px;
+    }
     .title__container {
         width: 300px;
     }
@@ -198,7 +201,7 @@ img {
 
 @media (max-width: 375px) {
     .final__score {
-        font-size: 50px;
+        font-size: 26px;
     }
 }
 @media (max-width: 320px) {
