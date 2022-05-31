@@ -7,25 +7,30 @@ ans.forEach(elem => elem.addEventListener("click", checkAnswer, false));
 let retry = document.querySelector(".retry__button");
 retry.addEventListener("click", retryGame, false);
 
-let timeRemaining = 10;
-let difficulty = 10;
+let timeRemaining;
+let difficulty;
 let timerId;
 let correctAnswerGlobal;
-let score = 0;
+let score;
 
+function setInitialVariables(){
+    timeRemaining = 10;
+    difficulty = 10;
+    score = 0;
+}
 function startGame() {
+    setInitialVariables();
     showElements();
     timerId = setInterval(timer, 1000);
     generateGame();
 }
 
 function retryGame() {
-    timeRemaining = 5;
-    difficulty = 10;
-    score = 0;
+    setInitialVariables();
     document.querySelector(".retry__button").style.display = "none";
     document.querySelector('.final__score').style.display = "none";
     document.querySelector('.score__info').innerHTML = score;
+    document.querySelector('.title').innerHTML = "Реши пример пока не закончилось время";
     startGame();
 }
 function showElements() {
