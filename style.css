@@ -159,12 +159,12 @@ img {
         width: 100px;
         height: 75px;
     }
-}
-
-@media (max-width: 425px) {
     .final__score {
         font-size: 36px;
     }
+}
+
+@media (max-width: 425px) {
     .title__container {
         width: 300px;
     }
