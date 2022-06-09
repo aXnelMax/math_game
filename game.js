@@ -14,7 +14,7 @@ let correctAnswerGlobal;
 let score;
 let errorsCount;
 
-function setInitialVariables(){
+function setInitialVariables() {
     timeRemaining = 10;
     difficulty = 10;
     score = 0;
@@ -59,7 +59,7 @@ function timer() {
     }
 }
 
-function stopGame(){
+function stopGame() {
     let mainGame = document.querySelector('.main__game');
     let finalScore = document.querySelector('.final__score');
     document.querySelector('.title').innerHTML = "Game Over!";
@@ -76,11 +76,29 @@ function generateGame() {
 }
 
 function generateArg() {
-    return Number((Math.random()*difficulty).toFixed());
+    return Number((Math.random() * difficulty).toFixed());
 }
+/* Old version. Generate numbers with repeats
+function generateAnswer() {
+    return Number((Math.random()*(difficulty*2)).toFixed());
+}
+*/
 
-function generateAnswer(multiplier) {
-    return Number((Math.random()*(difficulty*multiplier)).toFixed());
+// New version generating unique numbers
+function generateAnswer(answers) {
+    while (answers.length < 5) {
+        let randomNumber = Math.ceil(Math.random() * (difficulty * 2));
+        let found = false;
+        for (let i = 0; i < answers.length; i++) {
+            if (answers[i] === randomNumber) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {answers[answers.length] = randomNumber;}
+        
+    }
+    return answers;
 }
 
 function generateTask() {
@@ -91,21 +109,22 @@ function generateTask() {
 }
 
 function generateAnswers() {
-    let answers = [0, 0, 0, 0, 0];
-    let rightAnswerPos = (Math.random()*4).toFixed();
+    let answers = [];
+    let rightAnswerPos = (Math.random() * 4).toFixed();
 
-    answers = answers.map(elem => elem = generateAnswer(2));
+    //answers = answers.map(elem => elem = generateAnswer());
+    answers = generateAnswer(answers);
 
     answers[rightAnswerPos] = generateTask();
 
     answers.forEach((elem, i) => {
         document.querySelector(`#answer-${i}`).innerHTML = elem;
     })
-    
+
     correctAnswerGlobal = answers[rightAnswerPos];
 }
 
-function checkAnswer(){
+function checkAnswer() {
     let answer = this.innerHTML;
     if (correctAnswerGlobal === +answer) {
         correctAnswer();
@@ -140,6 +159,6 @@ function scoreCount() {
     document.querySelector('.score__info').innerHTML = score;
 }
 
-function updateTime(){
+function updateTime() {
     document.querySelector('.time__info').innerHTML = timeRemaining;
 }
