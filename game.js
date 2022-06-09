@@ -15,7 +15,7 @@ let score;
 let errorsCount;
 
 function setInitialVariables() {
-    timeRemaining = 10;
+    timeRemaining = 15;
     difficulty = 10;
     score = 0;
     errorsCount = 0;
@@ -90,7 +90,7 @@ function generateAnswer(answers) {
         let randomNumber = Math.ceil(Math.random() * (difficulty * 2));
         let found = false;
         for (let i = 0; i < answers.length; i++) {
-            if (answers[i] === randomNumber) {
+            if ((answers[i] === randomNumber) || (correctAnswerGlobal === randomNumber)) {
                 found = true;
                 break;
             }
@@ -114,16 +114,16 @@ function generateAnswers() {
     let rightAnswerPos = (Math.random() * 4).toFixed();
 
     //answers = answers.map(elem => elem = generateAnswer());
+    
+    correctAnswerGlobal = generateTask();
+
     answers = generateAnswer(answers);
 
-
-    answers[rightAnswerPos] = generateTask();
+    answers[rightAnswerPos] = correctAnswerGlobal;
 
     answers.forEach((elem, i) => {
         document.querySelector(`#answer-${i}`).innerHTML = elem;
     })
-
-    correctAnswerGlobal = answers[rightAnswerPos];
 }
 
 function checkAnswer() {
