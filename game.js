@@ -78,8 +78,27 @@ function generateArg() {
     return Number((Math.random() * difficulty).toFixed());
 }
 
-function generateAnswer(multiplier) {
-    return Number((Math.random() * (difficulty * multiplier)).toFixed());
+/* Old version. Generate numbers with repeats
+function generateAnswer() {
+    return Number((Math.random()*(difficulty*2)).toFixed());
+}
+*/
+
+// New version generating unique numbers
+function generateAnswer(answers) {
+    while (answers.length < 5) {
+        let randomNumber = Math.ceil(Math.random() * (difficulty * 2));
+        let found = false;
+        for (let i = 0; i < answers.length; i++) {
+            if (answers[i] === randomNumber) {
+                found = true;
+                break;
+            }
+        }
+        if (!found) {answers[answers.length] = randomNumber;}
+        
+    }
+    return answers;
 }
 
 function generateTask() {
@@ -90,13 +109,13 @@ function generateTask() {
 }
 
 function generateAnswers() {
-    const MULTIPLIER = 2;
-    const RANGE_OF_ANSWER_POS = 4;
 
-    let answers = [0, 0, 0, 0, 0];
-    let rightAnswerPos = (Math.random() * RANGE_OF_ANSWER_POS).toFixed();
+    let answers = [];
+    let rightAnswerPos = (Math.random() * 4).toFixed();
 
-    answers = answers.map(elem => elem = generateAnswer(MULTIPLIER));
+    //answers = answers.map(elem => elem = generateAnswer());
+    answers = generateAnswer(answers);
+
 
     answers[rightAnswerPos] = generateTask();
 
@@ -108,6 +127,7 @@ function generateAnswers() {
 }
 
 function checkAnswer() {
+
     const answer = this.innerHTML;
     const TIME_TO_ADD = 2;
     const TIME_TO_REMOVE = 1;
