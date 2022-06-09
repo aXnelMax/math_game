@@ -89,7 +89,7 @@ function generateAnswer(answers) {
     while (answers.length < 5) {
         let randomNumber = Math.ceil(Math.random() * (difficulty * 2));
         let found = false;
-        for (let i = 0; i < answers.length; i++) {
+        for (let i = 0; i <= answers.length; i++) {
             if ((answers[i] === randomNumber) || (correctAnswerGlobal === randomNumber)) {
                 found = true;
                 break;
